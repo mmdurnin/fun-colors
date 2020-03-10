@@ -1,4 +1,6 @@
+
 function divideColors(control, elements) {
+  
   $(elements).each(function(i, element) {
     let color = $(this).css("background-color")
     let string = (color[3] === "a") ? color.slice(5, color.length - 1) : color.slice(4, color.length - 1)
@@ -38,6 +40,12 @@ function fade(i, arr, control) {
   return `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`
 }
 
+function transformElements() {
+  console.log($('div').css('border-radius'))
+  let borderRadius = ($('div').css('border-radius') === '0px') ? '100%' : '0px';
+  $('div').css('border-radius', borderRadius)
+}
+
 let colorDivide;
 
 function loadColors() {
@@ -54,13 +62,18 @@ function loadColors() {
 $(window).on('load', loadColors)
 
 $('div').click((e) => {
-  divideColors("click", e.target)
+  let fx = $(e.target).css("flex-direction")
+  if (fx === "row") {
+    divideColors("click", e.target)
+  } else {
+    transformElements()
+  }
 })
 
-// $('.child').mouseover((e) => {
-//   $(e.target).animate({height: '+=1px', width: '+=1px'}, "slow")
-// })
+$('.child').mouseover((e) => {
+  $(e.target).fadeTo("slow", .5)
+})
 
-// $('.child').mouseout((e) => {
-//   $(e.target).animate({height: '-=1px', width: '-=1px'})
-// })
+$('.child').mouseout((e) => {
+  $(e.target).fadeTo("slow", 1.0)
+})
