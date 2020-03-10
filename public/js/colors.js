@@ -35,9 +35,10 @@ function fade(i, arr, control) {
   return `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`
 }
 
+let colorDivide;
 
-$(window).on('load', () => {
-  const colorDivide = setInterval(function() {
+function loadColors() {
+  colorDivide = setInterval(function () {
     if ($('div').length > 300) {
       clearInterval(colorDivide)
     } else {
@@ -45,7 +46,9 @@ $(window).on('load', () => {
     }
     console.log($('div').length)
   }, 1000)
-})
+}
+
+$(window).on('load', loadColors)
 
 $('div').click((e) => {
   divideColors("click", e.target)
