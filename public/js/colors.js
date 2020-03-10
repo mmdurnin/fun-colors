@@ -13,7 +13,7 @@ function divideColors(control, elements) {
     console.log(flexDirection)
     newDivs.forEach((div) => {
       $(div).css('flex-direction', flexDirection)
-      div.className = "child"
+      $(div).addClass("child")
       $(element).append(div)
     })
   })
@@ -25,7 +25,7 @@ function fade(i, arr, control) {
   }
 
   if (control === "auto") {
-    arr[i] = (arr[i] + 8) % 255;
+    arr[i] = (arr[i] *= 2) % 255;
   } else {
     let mult = (Math.pow(arr[i], 2)) % 255;
     let divi = (Math.floor(Math.sqrt(arr[i])));
@@ -39,7 +39,7 @@ let colorDivide;
 
 function loadColors() {
   colorDivide = setInterval(function () {
-    if ($('div').length > 300) {
+    if ($('div').length > 600) {
       clearInterval(colorDivide)
     } else {
       divideColors("auto", $('.child'));
@@ -54,10 +54,10 @@ $('div').click((e) => {
   divideColors("click", e.target)
 })
 
-$('div').mouseover((e) => {
-  $(e.target).animate({right: '250px'}, "slow")
-})
+// $('.child').mouseover((e) => {
+//   $(e.target).animate({height: '+=1px', width: '+=1px'}, "slow")
+// })
 
-$('div').mouseout((e) => {
-  $(e.target).animate({left: '250px'})
-})
+// $('.child').mouseout((e) => {
+//   $(e.target).animate({height: '-=1px', width: '-=1px'})
+// })
