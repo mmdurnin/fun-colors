@@ -13,6 +13,10 @@ html, body {
   position: relative;
 }
 
+.hidden {
+  display: none;
+}
+
 .div-1 {
   background-color: rgb(187, 238, 221);
 }
@@ -53,5 +57,5 @@ div {
   justify-content: stretch;
   height: 100%;
   width: 100%;
-  border-radius: 100%;
+  /* border-radius: 100%; */
 }

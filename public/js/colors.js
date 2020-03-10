@@ -13,8 +13,11 @@ function divideColors(control, elements) {
     console.log(flexDirection)
     newDivs.forEach((div) => {
       $(div).css('flex-direction', flexDirection)
-      $(div).addClass("child")
+      $(div).addClass("hidden")
       $(element).append(div)
+      $(div).fadeIn(2000)
+      $(div).removeClass("hidden")
+      $(div).addClass("child")
     })
   })
 }
@@ -25,7 +28,7 @@ function fade(i, arr, control) {
   }
 
   if (control === "auto") {
-    arr[i] = (arr[i] *= 2) % 255;
+    arr[i] = (arr[i] * 2) % 255;
   } else {
     let mult = (Math.pow(arr[i], 2)) % 255;
     let divi = (Math.floor(Math.sqrt(arr[i])));
@@ -45,7 +48,7 @@ function loadColors() {
       divideColors("auto", $('.child'));
     }
     console.log($('div').length)
-  }, 1000)
+  }, 2000)
 }
 
 $(window).on('load', loadColors)
