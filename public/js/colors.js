@@ -52,5 +52,9 @@ $('div').click((e) => {
 })
 
 $('div').mouseover((e) => {
+  $(e.target).animate({right: '250px'}, "slow")
+})
+
+$('div').mouseout((e) => {
   $(e.target).animate({left: '250px'})
 })
